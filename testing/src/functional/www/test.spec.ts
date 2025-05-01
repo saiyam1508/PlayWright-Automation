@@ -28,7 +28,4 @@ test('Order', async ({ page }) => {
     //Order Confirmed
     await checkoutPage.confirmOrderAndVerify();
     console.log('Order Confirmed');
-
-
-
 });

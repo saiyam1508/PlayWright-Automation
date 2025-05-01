@@ -1,7 +1,7 @@
 import { Page, Locator, expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import * as fs from 'fs';
-
+import * as path from 'path';
 
 export class register {
     readonly page: Page;
@@ -58,8 +58,8 @@ export class register {
     }
 
     async registerRandomUser(): Promise<void> {
-        const randomFirstName = faker.name.firstName();
-        const randomLastName = faker.name.lastName();
+        const randomFirstName = faker.person.firstName();
+        const randomLastName = faker.person.lastName();
         const randomEmail = faker.internet.email();
         const randomCompany = faker.company.name();
         const randomAddress = faker.location.streetAddress();
@@ -111,7 +111,8 @@ export class register {
             dateOfBirth: `${randomDay}-${randomMonth}-${randomYear}`
         };
 
-        const filePath = 'C:/PlaywrightTest/testing/src/functional/TestData/testData.json';
+        const dir = path.resolve('testing/src/functional/TestData');
+        const filePath = path.join(dir, 'testData.json');
         fs.writeFileSync(filePath, JSON.stringify(user, null, 2));
     }
 

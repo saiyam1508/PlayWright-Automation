@@ -9,7 +9,10 @@ module.exports = defineConfig({
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [['html', { open: 'never' }]],
+  use: {
+    javaScriptEnabled: true, // default is true
+  },
 
   /* Configure projects for major browsers */
   projects: [
